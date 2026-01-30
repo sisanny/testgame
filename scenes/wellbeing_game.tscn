@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://02a1sl1ip06p" path="res://scenes/crystal.tscn" id="3_wraew"]
 [ext_resource type="PackedScene" uid="uid://dubhx3wxe7gup" path="res://scenes/platform.tscn" id="5_beq0m"]
 [ext_resource type="PackedScene" uid="uid://cg5qcfeb4hxcc" path="res://scenes/killzone.tscn" id="6_hxe2k"]
+[ext_resource type="PackedScene" uid="uid://dakhrf11ryqvp" path="res://scenes/story_textbox.tscn" id="9_wjsfh"]
+[ext_resource type="FontFile" uid="uid://2tn3nfn377j0" path="res://assets/fonts/PixelOperator8.ttf" id="10_365ty"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wraew"]
 texture = ExtResource("3_4t1xa")
@@ -421,3 +423,25 @@ position = Vector2(257, -236)
 
 [node name="platform5" parent="Platforms" unique_id=147803499 instance=ExtResource("5_beq0m")]
 position = Vector2(317, -271)
+
+[node name="StoryTextbox" parent="." unique_id=883575319 instance=ExtResource("9_wjsfh")]
+
+[node name="Label" type="Label" parent="." unique_id=1195427248]
+offset_left = -153.0
+offset_top = 35.0
+offset_right = 2.0
+offset_bottom = 58.0
+theme_override_colors/font_color = Color(0.20982873, 0.41922447, 1, 1)
+theme_override_fonts/font = ExtResource("10_365ty")
+theme_override_font_sizes/font_size = 8
+text = "Press space to jump"
+
+[node name="Label2" type="Label" parent="." unique_id=1041036686]
+offset_left = 8.0
+offset_top = 76.0
+offset_right = 260.0
+offset_bottom = 99.0
+theme_override_colors/font_color = Color(0.21176471, 0.41960785, 1, 1)
+theme_override_fonts/font = ExtResource("10_365ty")
+theme_override_font_sizes/font_size = 8
+text = "Submerge to restart"
