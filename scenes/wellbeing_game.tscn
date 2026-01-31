@@ -8,10 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://02a1sl1ip06p" path="res://scenes/crystal.tscn" id="3_wraew"]
 [ext_resource type="PackedScene" uid="uid://dubhx3wxe7gup" path="res://scenes/platform.tscn" id="5_beq0m"]
 [ext_resource type="PackedScene" uid="uid://cg5qcfeb4hxcc" path="res://scenes/killzone.tscn" id="6_hxe2k"]
-[ext_resource type="PackedScene" uid="uid://10sm4mrpi1g7" path="res://scenes/treasurebox.tscn" id="9_wjsfh"]
-[ext_resource type="PackedScene" uid="uid://dakhrf11ryqvp" path="res://scenes/story_textbox.tscn" id="9_wjsfh"]
+[ext_resource type="PackedScene" uid="uid://b2qcoqxy27ek2" path="res://scenes/story_textbox.tscn" id="9_wjsfh"]
 [ext_resource type="FontFile" uid="uid://2tn3nfn377j0" path="res://assets/fonts/PixelOperator8.ttf" id="10_365ty"]
-[ext_resource type="PackedScene" uid="uid://bsjh1pwr8bska" path="res://scenes/portal.tscn" id="11_5x14l"]
+[ext_resource type="PackedScene" path="res://scenes/portal.tscn" id="11_5x14l"]
+[ext_resource type="PackedScene" uid="uid://ch2uhidetcav2" path="res://scenes/treasurebox.tscn" id="12_dluid"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wraew"]
 texture = ExtResource("3_4t1xa")
@@ -388,16 +388,12 @@ tile_map_data = PackedByteArray("AAAEAAMAAAAAAAkAAAAAAAEAAAAAAAkAAAABAAEAAAAAAAk
 tile_set = SubResource("TileSet_umyjk")
 
 [node name="treasurebox" parent="TileMap" unique_id=1606527077 instance=ExtResource("9_wjsfh")]
-position = Vector2(160, -4)
 
 [node name="treasurebox2" parent="TileMap" unique_id=441118370 instance=ExtResource("9_wjsfh")]
-position = Vector2(662, -136)
 
 [node name="treasurebox3" parent="TileMap" unique_id=1820401047 instance=ExtResource("9_wjsfh")]
-position = Vector2(66, -274)
 
 [node name="treasurebox4" parent="TileMap" unique_id=477931155 instance=ExtResource("9_wjsfh")]
-position = Vector2(496, -385)
 
 [node name="killzone" parent="." unique_id=394705567 instance=ExtResource("6_hxe2k")]
 position = Vector2(31, 87)
@@ -478,11 +474,7 @@ text = "Know thyself"
 [node name="portal" parent="." unique_id=502034894 instance=ExtResource("11_5x14l")]
 position = Vector2(108, -30)
 
-[node name="treasurebox" parent="." unique_id=872412872 instance=ExtResource("9_wjsfh")]
-position = Vector2(398, -79)
-
-[node name="treasurebox2" parent="." unique_id=1460230143 instance=ExtResource("9_wjsfh")]
-position = Vector2(398, -79)
+[node name="treasurebox3" parent="." unique_id=952905608 instance=ExtResource("12_dluid")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=919532303]
 
@@ -510,3 +502,9 @@ layout_mode = 2
 size_flags_vertical = 4
 wrap_mode = 1
 tab_input_mode = false
+
+[node name="treasurebox" parent="." unique_id=1070595349 instance=ExtResource("12_dluid")]
+position = Vector2(155, -2)
+
+[node name="treasurebox2" parent="." unique_id=489437429 instance=ExtResource("12_dluid")]
+position = Vector2(206, -135)
