@@ -174,7 +174,7 @@ collision_layer = 2
 position = Vector2(-1, -15)
 sprite_frames = SubResource("SpriteFrames_jej6c")
 animation = &"jump"
-frame_progress = 0.027908903
+frame_progress = 0.7109879
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1647452815]
 position = Vector2(0, -12)
