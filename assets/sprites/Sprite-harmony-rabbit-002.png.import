@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0ue7uw7qox20"
-path="res://.godot/imported/Sprite-harmony-rabbit-001.png-7b1c38fef65fa59ce2222a3e00ac602a.ctex"
+uid="uid://d2tyg0cpce5ns"
+path="res://.godot/imported/Sprite-harmony-rabbit-002.png-95774fc3236e20f12797d02e35656467.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Sprite-harmony-rabbit-001.png"
-dest_files=["res://.godot/imported/Sprite-harmony-rabbit-001.png-7b1c38fef65fa59ce2222a3e00ac602a.ctex"]
+source_file="res://assets/sprites/Sprite-harmony-rabbit-002.png"
+dest_files=["res://.godot/imported/Sprite-harmony-rabbit-002.png-95774fc3236e20f12797d02e35656467.ctex"]
 
 [params]
 
