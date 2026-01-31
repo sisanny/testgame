@@ -2,7 +2,7 @@ extends CanvasLayer
 
 @onready var textbox_container = $TextboxContainer
 
-var has_hidden_label := false
+var has_hidden_label = false
 
 func _ready() -> void:
 	set_process_input(true)
