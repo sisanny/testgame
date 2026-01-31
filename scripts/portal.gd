@@ -37,3 +37,4 @@ func _on_interact() -> void:
 		info_container.visible = false
 		interaction_label.visible = false
 		print("player entered portal")
+		get_tree().change_scene_to_file("res://scenes/level_transition.tscn")

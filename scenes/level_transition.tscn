@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://bkprnhye2q8dl"]
+
+[ext_resource type="Script" path="res://scripts/level_transition.gd" id="1_2ybma"]
+[ext_resource type="FontFile" uid="uid://bo7xgktt1do4w" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_g1ell"]
+[ext_resource type="Texture2D" uid="uid://c8wpph72j6i3i" path="res://assets/sprites/mask-removal.png" id="1_hp486"]
+
+[node name="LevelTransition" type="CanvasLayer" unique_id=759789867]
+script = ExtResource("1_2ybma")
+
+[node name="Control" type="Control" parent="." unique_id=1802033683]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=729449804]
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 648.0
+texture = ExtResource("1_hp486")
+stretch_mode = 5
+
+[node name="TextboxContainer" type="MarginContainer" parent="Control" unique_id=12586630]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -341.0
+offset_top = -241.0
+offset_right = 341.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TextboxContainer" unique_id=1566630046]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/TextboxContainer/VBoxContainer" unique_id=1224417527]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/TextboxContainer/VBoxContainer/PanelContainer" unique_id=496623768]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="Control/TextboxContainer/VBoxContainer/PanelContainer/MarginContainer" unique_id=1410027145]
+custom_minimum_size = Vector2(650, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_g1ell")
+text = "Congratulations! You completed the Jungian Persona level on your journey to better self-awareness!
+
+Jung believed we need a persona as a necessary social mask - to protect our inner life and allow us to function in the world - but that psychological growth requires becoming conscious of it, gently looking behind it, and integrating what we find, so that we use the mask without mistaking it for our true face."
+horizontal_alignment = 1
+autowrap_mode = 3
