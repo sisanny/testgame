@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://bsjh1pwr8bska"]
+
+[ext_resource type="Script" uid="uid://bma1d874c1y6o" path="res://scripts/portal.gd" id="1_jr6l0"]
+[ext_resource type="Texture2D" uid="uid://co4iwxw0xbuaq" path="res://assets/sprites/portal.png" id="1_v0xau"]
+[ext_resource type="FontFile" uid="uid://2tn3nfn377j0" path="res://assets/fonts/PixelOperator8.ttf" id="3_d4jfq"]
+[ext_resource type="FontFile" uid="uid://bo7xgktt1do4w" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="4_d4jfq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ffj6"]
+atlas = ExtResource("1_v0xau")
+region = Rect2(0, 0, 96, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jr6l0"]
+atlas = ExtResource("1_v0xau")
+region = Rect2(96, 0, 96, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d4jfq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ffj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jr6l0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dyed0"]
+radius = 22.0
+
+[node name="portal" type="Area2D" unique_id=502034894]
+collision_mask = 2
+script = ExtResource("1_jr6l0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=231255552]
+sprite_frames = SubResource("SpriteFrames_d4jfq")
+autoplay = "default"
+frame_progress = 0.74766487
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=624137106]
+position = Vector2(0, 13)
+shape = SubResource("CircleShape2D_dyed0")
+
+[node name="InteractionLabel" type="Label" parent="." unique_id=705312203]
+offset_left = 7.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 26.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_d4jfq")
+theme_override_font_sizes/font_size = 8
+text = "Press ENTER"
+
+[node name="InfoContainer" type="VBoxContainer" parent="." unique_id=1484958484]
+offset_left = 30.0
+offset_top = -34.0
+offset_right = 128.0
+
+[node name="PanelContainer" type="PanelContainer" parent="InfoContainer" unique_id=1110181183]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="InfoContainer/PanelContainer" unique_id=773334742]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="InfoLabel" type="Label" parent="InfoContainer/PanelContainer/MarginContainer" unique_id=582474183]
+texture_filter = 1
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("4_d4jfq")
+theme_override_font_sizes/font_size = 8
+text = "Collect 5 crystals to enter"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
