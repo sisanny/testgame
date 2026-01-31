@@ -1,43 +1,48 @@
 extends CharacterBody2D
 
+const SPEED := 200.0
+const JUMP_VELOCITY := -350.0
 
-const SPEED = 200.0
-const JUMP_VELOCITY = -350.0
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-@onready var animated_sprite = $AnimatedSprite2D
-@onready var animation_player = $AnimationPlayer
+var can_move := true
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
+	if not can_move:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
+
+	# Gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	# Handle jump.
+	# Jump
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	# Get the input direction: -1, 0, 1
+	# Horizontal input
 	var direction := Input.get_axis("move_left", "move_right")
-	
-	# Flip the sprite
+
+	# Flip sprite
 	if direction > 0:
 		animated_sprite.flip_h = false
 	elif direction < 0:
-		animated_sprite.flip_h = true	
-	
-	# Play animations
+		animated_sprite.flip_h = true
+
+	# Animations
 	if is_on_floor():
 		if direction == 0:
 			animated_sprite.play("idle")
-		else: 
+		else:
 			animated_sprite.play("run")
 	else:
 		animation_player.play("jump")
-	
-	# Apply movement
-	if direction:
+
+	if direction != 0:
 		velocity.x = direction * SPEED
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0.0, SPEED)
 
 	move_and_slide()
