@@ -13,6 +13,8 @@ extends Area2D
 var opened := false
 var waiting_for_submit := false
 var player_ref: CharacterBody2D = null
+var dialog_open := false
+
 
 func _ready() -> void:
 	# Chest starts visible/closed
@@ -27,6 +29,12 @@ func _ready() -> void:
 
 	if not sprite.animation_finished.is_connected(_on_open_anim_finished):
 		sprite.animation_finished.connect(_on_open_anim_finished)
+	
+	# Listen for Ctrl+Enter inside TextEdit (Enter alone inserts newline)
+	if input_any is TextEdit:
+		var te := input_any as TextEdit
+		if not te.gui_input.is_connected(_on_text_input_gui_input):
+			te.gui_input.connect(_on_text_input_gui_input)
 
 func _on_body_entered(body: Node2D) -> void:
 	if opened or waiting_for_submit:
@@ -58,10 +66,9 @@ func _on_body_entered(body: Node2D) -> void:
 	if title:
 		title.text = dialog_title
 	
-	#if title:
-	#	title.text = "I need different text fo each dialog"
 	_set_input_text("")
 
+	dialog_open = true
 	dialog.popup_centered()
 	await get_tree().process_frame
 	_grab_input_focus()
@@ -75,7 +82,7 @@ func _on_submit() -> void:
 	waiting_for_submit = false
 
 	var text := _get_input_text().strip_edges()
-	print("Submitted:", text)
+	dialog_open = false
 
 	dialog.hide()
 	open_box()
@@ -104,7 +111,7 @@ func _on_open_anim_finished() -> void:
 		sprite.queue_free()
 	)
 
-# --- helpers (TextEdit or LineEdit) ---
+# --- helpers for TextEdit ---
 func _get_input_text() -> String:
 	if input_any == null:
 		return ""
@@ -129,3 +136,16 @@ func _grab_input_focus() -> void:
 		(input_any as TextEdit).grab_focus()
 	elif input_any is LineEdit:
 		(input_any as LineEdit).grab_focus()
+		
+		
+# Add ctrl + enter for submit 
+func _on_text_input_gui_input(event: InputEvent) -> void:
+	if not dialog_open:
+		return
+
+	if event is InputEventKey and event.pressed and not event.echo:
+		var k := event as InputEventKey
+		if k.ctrl_pressed and (k.keycode == KEY_ENTER or k.keycode == KEY_KP_ENTER):
+			# Trigger the same logic as clicking OK
+			dialog.confirmed.emit()
+			get_viewport().set_input_as_handled()

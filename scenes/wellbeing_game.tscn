@@ -475,7 +475,7 @@ dialog_title = "When do I feel most alive - and least \"appropriate\"? "
 
 [node name="NameDialog" type="AcceptDialog" parent="CanvasLayer" unique_id=511809777]
 oversampling_override = 1.0
-title = ""
+title = "Your answer won't be saved anywhere, this is just for you. (Press Ctrl + Enter to submit)"
 size = Vector2i(516, 284)
 content_scale_mode = 1
 ok_button_text = "Submit"
