@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://10sm4mrpi1g7"]
+[gd_scene format=3 uid="uid://ch2uhidetcav2"]
 
-[ext_resource type="Script" uid="uid://dwrbuq8y1gxto" path="res://scripts/treasurebox.gd" id="1_ghl5q"]
-[ext_resource type="Texture2D" uid="uid://dfrkr6adwbx4v" path="res://assets/sprites/treasure_box.png" id="1_n31ls"]
+[ext_resource type="Script" uid="uid://crmkws43ox842" path="res://scripts/treasurebox.gd" id="1_ghl5q"]
+[ext_resource type="Texture2D" uid="uid://tucsyjgn1oa4" path="res://assets/sprites/treasure_box.png" id="1_n31ls"]
 [ext_resource type="PackedScene" uid="uid://02a1sl1ip06p" path="res://scenes/crystal.tscn" id="3_78qj3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cmrrg"]
@@ -47,6 +47,7 @@ animations = [{
 position = Vector2(0, -2)
 collision_mask = 2
 script = ExtResource("1_ghl5q")
+dialog_title = null
 
 [node name="Crystal" parent="." unique_id=26949370 instance=ExtResource("3_78qj3")]
 visible = false
