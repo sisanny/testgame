@@ -17,6 +17,7 @@ var dialog_open := false
 
 
 func _ready() -> void:
+	add_to_group("treasureboxes")
 	# Chest starts visible/closed
 	sprite.stop()
 	sprite.frame = 0
