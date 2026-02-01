@@ -35,7 +35,7 @@ func _ready() -> void:
 			te.gui_input.connect(_on_text_input_gui_input)
 
 func _on_body_entered(body: Node2D) -> void:
-	if opened or waiting_for_submit:
+	if opened or waiting_for_submit or dialog_open:
 		return
 	if not body.is_in_group("player"):
 		return
@@ -53,7 +53,12 @@ func _on_body_entered(body: Node2D) -> void:
 		player_ref.global_position.x -= 8
 	else:
 		player_ref.global_position.x += 8
-
+	
+	if dialog.confirmed.is_connected(_on_submit):
+		dialog.confirmed.disconnect(_on_submit)
+	if dialog.canceled.is_connected(_on_cancel):
+		dialog.canceled.disconnect(_on_cancel)
+	
 	dialog.confirmed.connect(_on_submit, CONNECT_ONE_SHOT)
 	dialog.canceled.connect(_on_cancel, CONNECT_ONE_SHOT)
 	
