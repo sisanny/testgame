@@ -12,6 +12,7 @@
 [ext_resource type="FontFile" uid="uid://2tn3nfn377j0" path="res://assets/fonts/PixelOperator8.ttf" id="10_365ty"]
 [ext_resource type="PackedScene" path="res://scenes/portal.tscn" id="11_5x14l"]
 [ext_resource type="PackedScene" uid="uid://ch2uhidetcav2" path="res://scenes/treasurebox.tscn" id="12_dluid"]
+[ext_resource type="Script" uid="uid://c3o6pjonkx047" path="res://scripts/name_dialog.gd" id="13_6jr3m"]
 [ext_resource type="FontFile" uid="uid://bo7xgktt1do4w" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="13_7ufde"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wraew"]
@@ -354,6 +355,10 @@ _data = {
 &"move": SubResource("Animation_hxe2k")
 }
 
+[sub_resource type="GDScript" id="GDScript_7ufde"]
+script/source = "extends CanvasLayer
+"
+
 [node name="WellbeingGame" type="Node2D" unique_id=789318829]
 
 [node name="HUD" parent="." unique_id=933000316 instance=ExtResource("1_m3aci")]
@@ -472,14 +477,17 @@ position = Vector2(39, -274)
 dialog_title = "When do I feel most alive - and least \"appropriate\"? "
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=919532303]
+script = SubResource("GDScript_7ufde")
 
 [node name="NameDialog" type="AcceptDialog" parent="CanvasLayer" unique_id=511809777]
 oversampling_override = 1.0
 title = "Your answer won't be saved anywhere, this is just for you. (Press Ctrl + Enter to submit)"
 size = Vector2i(516, 284)
+exclusive = false
 content_scale_mode = 1
 ok_button_text = "Submit"
 dialog_close_on_escape = false
+script = ExtResource("13_6jr3m")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/NameDialog" unique_id=1740987581]
 offset_left = 8.0
@@ -514,3 +522,5 @@ dialog_title = "What am I afraid would happen if people saw the real me?"
 [node name="treasurebox5" parent="." unique_id=210468889 instance=ExtResource("12_dluid")]
 position = Vector2(517, -383)
 dialog_title = "Which traits do I perform rather than live?"
+
+[connection signal="canceled" from="CanvasLayer/NameDialog" to="CanvasLayer/NameDialog" method="_on_canceled"]

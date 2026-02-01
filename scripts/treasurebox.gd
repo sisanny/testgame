@@ -30,7 +30,7 @@ func _ready() -> void:
 	if not sprite.animation_finished.is_connected(_on_open_anim_finished):
 		sprite.animation_finished.connect(_on_open_anim_finished)
 	
-	# Listen for Ctrl+Enter inside TextEdit (Enter alone inserts newline)
+	# Connect the 
 	if input_any is TextEdit:
 		var te := input_any as TextEdit
 		if not te.gui_input.is_connected(_on_text_input_gui_input):
@@ -61,8 +61,11 @@ func _on_body_entered(body: Node2D) -> void:
 		player_ref.global_position.x += 8
 
 	# Connect ONLY for this interaction
-	dialog.confirmed.connect(_on_submit, CONNECT_ONE_SHOT)
+	#dialog.confirmed.connect(_on_submit, CONNECT_ONE_SHOT)
 
+	dialog.confirmed.connect(_on_submit, CONNECT_ONE_SHOT)
+	dialog.canceled.connect(_on_cancel, CONNECT_ONE_SHOT)
+	
 	if title:
 		title.text = dialog_title
 	
@@ -81,11 +84,20 @@ func _on_submit() -> void:
 
 	waiting_for_submit = false
 
-	var text := _get_input_text().strip_edges()
 	dialog_open = false
 
 	dialog.hide()
 	open_box()
+
+func _on_cancel() -> void:
+	# Unfreeze player (same as submit but no box opening)
+	if player_ref:
+		player_ref.set("can_move", true)
+		player_ref = null
+	
+	waiting_for_submit = false
+	dialog_open = false
+	dialog.hide()
 
 func open_box() -> void:
 	if opened:
