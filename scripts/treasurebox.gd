@@ -18,12 +18,10 @@ var dialog_open := false
 
 func _ready() -> void:
 	add_to_group("treasureboxes")
-	# Chest starts visible/closed
 	sprite.stop()
 	sprite.frame = 0
 	sprite.modulate.a = 1.0
 
-	# Crystal starts hidden + not pickable
 	crystal.visible = false
 	crystal.set_deferred("monitoring", false)
 	crystal.set_deferred("monitorable", false)
@@ -31,7 +29,6 @@ func _ready() -> void:
 	if not sprite.animation_finished.is_connected(_on_open_anim_finished):
 		sprite.animation_finished.connect(_on_open_anim_finished)
 	
-	# Connect the 
 	if input_any is TextEdit:
 		var te := input_any as TextEdit
 		if not te.gui_input.is_connected(_on_text_input_gui_input):
@@ -43,19 +40,15 @@ func _on_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("player"):
 		return
 
-	# Check if works with CharacterBody2D 
-	# Cast to your player (so can_move always exists)
 	player_ref = body as CharacterBody2D
 	if player_ref == null:
 		return
 
 	waiting_for_submit = true
 
-	# Freeze player
 	player_ref.set("can_move", false)
 	player_ref.velocity = Vector2.ZERO
 
-	# Small push away from the box (push left or right depending on side)
 	if player_ref.global_position.x < global_position.x:
 		player_ref.global_position.x -= 8
 	else:
@@ -75,7 +68,7 @@ func _on_body_entered(body: Node2D) -> void:
 	_grab_input_focus()
 
 func _on_submit() -> void:
-	# Unfreeze player
+
 	if player_ref:
 		player_ref.set("can_move", true)
 		player_ref = null
@@ -88,7 +81,6 @@ func _on_submit() -> void:
 	open_box()
 
 func _on_cancel() -> void:
-	# Unfreeze player (same as submit but no box opening)
 	if player_ref:
 		player_ref.set("can_move", true)
 		player_ref = null
@@ -109,7 +101,6 @@ func _on_open_anim_finished() -> void:
 	if sprite.animation != "open":
 		return
 
-	# Fade chest out, then reveal crystal + remove chest parts
 	var t := create_tween()
 	t.tween_property(sprite, "modulate:a", 0.0, 1.0)
 	t.tween_callback(func():
@@ -148,7 +139,6 @@ func _grab_input_focus() -> void:
 		(input_any as LineEdit).grab_focus()
 		
 		
-# Add ctrl + enter for submit 
 func _on_text_input_gui_input(event: InputEvent) -> void:
 	if not dialog_open:
 		return
@@ -156,6 +146,5 @@ func _on_text_input_gui_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
 		var k := event as InputEventKey
 		if k.ctrl_pressed and (k.keycode == KEY_ENTER or k.keycode == KEY_KP_ENTER):
-			# Trigger the same logic as clicking OK
 			dialog.confirmed.emit()
 			get_viewport().set_input_as_handled()
