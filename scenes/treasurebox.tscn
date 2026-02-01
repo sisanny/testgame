@@ -47,7 +47,6 @@ animations = [{
 position = Vector2(0, -2)
 collision_mask = 2
 script = ExtResource("1_ghl5q")
-dialog_title = null
 
 [node name="Crystal" parent="." unique_id=26949370 instance=ExtResource("3_78qj3")]
 visible = false
