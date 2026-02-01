@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dakhrf11ryqvp"]
 
 [ext_resource type="FontFile" uid="uid://bo7xgktt1do4w" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_bco0k"]
-[ext_resource type="Script" uid="uid://hvd2codl3l2a" path="res://scripts/story_textbox.gd" id="1_pywep"]
+[ext_resource type="Script" path="res://scripts/story_textbox.gd" id="1_pywep"]
 
 [node name="StoryTextbox" type="CanvasLayer" unique_id=883575319]
 script = ExtResource("1_pywep")

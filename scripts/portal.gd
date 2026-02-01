@@ -1,6 +1,5 @@
 extends Area2D
 
-var max_score: int = 5
 @onready var interaction_label = $InteractionLabel
 @onready var info_container = $InfoContainer
 @onready var info_label = $InfoContainer/PanelContainer/MarginContainer/InfoLabel
@@ -26,8 +25,8 @@ func _on_body_exited(body: Node2D) -> void:
 		info_container.visible = false
   
 func _on_interact() -> void:
-	if hud.score < max_score:
-		var crystals_left :int = max_score - hud.score
+	if hud.score < hud.max_score:
+		var crystals_left :int = hud.max_score - hud.score
 		var crystal_word := "crystal" if crystals_left == 1  else "crystals"
 		info_label.text = "You need %d more %s to use this portal." % [crystals_left, crystal_word]
 		
