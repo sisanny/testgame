@@ -1,34 +1,31 @@
 [gd_scene format=3 uid="uid://ch2uhidetcav2"]
 
 [ext_resource type="Script" uid="uid://crmkws43ox842" path="res://scripts/treasurebox.gd" id="1_ghl5q"]
-[ext_resource type="Texture2D" uid="uid://tucsyjgn1oa4" path="res://assets/sprites/treasure_box.png" id="1_n31ls"]
+[ext_resource type="Texture2D" uid="uid://b2jm1td2x44c6" path="res://assets/sprites/treasure_box.png" id="1_n31ls"]
 [ext_resource type="PackedScene" uid="uid://02a1sl1ip06p" path="res://scenes/crystal.tscn" id="3_78qj3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cmrrg"]
 size = Vector2(14, 10)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ghl5q"]
-atlas = ExtResource("1_n31ls")
-region = Rect2(0, 32, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_78qj3"]
 atlas = ExtResource("1_n31ls")
-region = Rect2(32, 32, 32, 32)
+region = Rect2(0, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_va6jy"]
 atlas = ExtResource("1_n31ls")
-region = Rect2(64, 32, 32, 32)
+region = Rect2(32, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n7u26"]
 atlas = ExtResource("1_n31ls")
-region = Rect2(96, 32, 32, 32)
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdqr8"]
+atlas = ExtResource("1_n31ls")
+region = Rect2(96, 64, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vdqr8"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ghl5q")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_78qj3")
 }, {
@@ -37,10 +34,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_n7u26")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vdqr8")
 }],
 "loop": false,
 "name": &"open",
-"speed": 5.0
+"speed": 2.0
 }]
 
 [node name="treasurebox" type="Area2D" unique_id=1606527077]
