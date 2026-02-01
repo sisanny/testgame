@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://ck3mpgswcifli"]
+
+[ext_resource type="Texture2D" uid="uid://doig085lt0ose" path="res://assets/sprites/level2-placeholder.png" id="1_idg8i"]
+
+[node name="WellbeingGame_level2" type="Node2D" unique_id=1070206156]
+
+[node name="Placeholder" type="TextureRect" parent="." unique_id=1452432086]
+offset_right = 1161.0
+offset_bottom = 649.0
+texture = ExtResource("1_idg8i")
+stretch_mode = 5
