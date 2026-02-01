@@ -1,5 +1,7 @@
 extends Area2D
 
+@export var dialog_title: String = "Enter your text:"
+
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collider: CollisionShape2D = $CollisionShape2D
 @onready var crystal: Area2D = $Crystal
@@ -54,7 +56,10 @@ func _on_body_entered(body: Node2D) -> void:
 	dialog.confirmed.connect(_on_submit, CONNECT_ONE_SHOT)
 
 	if title:
-		title.text = "Enter your text:"
+		title.text = dialog_title
+	
+	#if title:
+	#	title.text = "I need different text fo each dialog"
 	_set_input_text("")
 
 	dialog.popup_centered()

@@ -8,10 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://02a1sl1ip06p" path="res://scenes/crystal.tscn" id="3_wraew"]
 [ext_resource type="PackedScene" uid="uid://dubhx3wxe7gup" path="res://scenes/platform.tscn" id="5_beq0m"]
 [ext_resource type="PackedScene" uid="uid://cg5qcfeb4hxcc" path="res://scenes/killzone.tscn" id="6_hxe2k"]
-[ext_resource type="PackedScene" uid="uid://dakhrf11ryqvp" path="res://scenes/story_textbox.tscn" id="9_wjsfh"]
+[ext_resource type="PackedScene" uid="uid://b2qcoqxy27ek2" path="res://scenes/story_textbox.tscn" id="9_wjsfh"]
 [ext_resource type="FontFile" uid="uid://2tn3nfn377j0" path="res://assets/fonts/PixelOperator8.ttf" id="10_365ty"]
-[ext_resource type="PackedScene" uid="uid://bsjh1pwr8bska" path="res://scenes/portal.tscn" id="11_5x14l"]
-[ext_resource type="PackedScene" uid="uid://10sm4mrpi1g7" path="res://scenes/treasurebox.tscn" id="12_dluid"]
+[ext_resource type="PackedScene" path="res://scenes/portal.tscn" id="11_5x14l"]
+[ext_resource type="PackedScene" uid="uid://ch2uhidetcav2" path="res://scenes/treasurebox.tscn" id="12_dluid"]
+[ext_resource type="FontFile" uid="uid://bo7xgktt1do4w" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="13_7ufde"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wraew"]
 texture = ExtResource("3_4t1xa")
@@ -468,12 +469,13 @@ position = Vector2(108, -30)
 
 [node name="treasurebox3" parent="." unique_id=952905608 instance=ExtResource("12_dluid")]
 position = Vector2(39, -274)
+dialog_title = "When do I feel most alive - and least \"appropriate\"? "
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=919532303]
 
 [node name="NameDialog" type="AcceptDialog" parent="CanvasLayer" unique_id=511809777]
 oversampling_override = 1.0
-title = "Answer"
+title = ""
 size = Vector2i(516, 284)
 content_scale_mode = 1
 ok_button_text = "Submit"
@@ -486,24 +488,29 @@ offset_right = 508.0
 offset_bottom = 235.0
 
 [node name="TitleLabel" type="Label" parent="CanvasLayer/NameDialog/VBoxContainer" unique_id=404581911]
-visible = false
 layout_mode = 2
+theme_override_fonts/font = ExtResource("13_7ufde")
 
 [node name="NameInput" type="TextEdit" parent="CanvasLayer/NameDialog/VBoxContainer" unique_id=100414950]
 custom_minimum_size = Vector2(400, 200)
 layout_mode = 2
 size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("13_7ufde")
 wrap_mode = 1
 tab_input_mode = false
 
 [node name="treasurebox" parent="." unique_id=1070595349 instance=ExtResource("12_dluid")]
 position = Vector2(184, 0)
+dialog_title = "Who would I be if nobody expected anything of me?"
 
 [node name="treasurebox2" parent="." unique_id=489437429 instance=ExtResource("12_dluid")]
 position = Vector2(624, -80)
+dialog_title = "What part of me feels most \"unacceptable\"?"
 
 [node name="treasurebox4" parent="." unique_id=1606527077 instance=ExtResource("12_dluid")]
 position = Vector2(436, -78)
+dialog_title = "What am I afraid would happen if people saw the real me?"
 
 [node name="treasurebox5" parent="." unique_id=210468889 instance=ExtResource("12_dluid")]
 position = Vector2(517, -383)
+dialog_title = "Which traits do I perform rather than live?"
