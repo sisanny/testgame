@@ -460,7 +460,7 @@ position = Vector2(108, -30)
 
 [node name="NameDialog" type="AcceptDialog" parent="CanvasLayer" unique_id=511809777]
 oversampling_override = 1.0
-title = "Your answer won't be saved anywhere, this is just for you. (Press Ctrl + Enter to submit)"
+title = "Your answer won't be saved anywhere, this is just for you. (Ctrl + Enter to submit)"
 size = Vector2i(516, 284)
 content_scale_mode = 1
 ok_button_text = "Submit"
