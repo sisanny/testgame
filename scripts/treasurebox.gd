@@ -61,9 +61,6 @@ func _on_body_entered(body: Node2D) -> void:
 	else:
 		player_ref.global_position.x += 8
 
-	# Connect ONLY for this interaction
-	#dialog.confirmed.connect(_on_submit, CONNECT_ONE_SHOT)
-
 	dialog.confirmed.connect(_on_submit, CONNECT_ONE_SHOT)
 	dialog.canceled.connect(_on_cancel, CONNECT_ONE_SHOT)
 	
